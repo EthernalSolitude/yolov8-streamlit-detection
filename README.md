@@ -167,6 +167,3 @@ result_image, results, stats = model.infer_image(
 print(f"Обнаружено: {stats}")
 ```
 
-## Автор
-
-**GitHub:** [EthernalSolitude](https://github.com/EthernalSolitude)
