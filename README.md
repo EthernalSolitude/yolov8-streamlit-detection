@@ -47,20 +47,32 @@ streamlit run app.py
 
 ### Вариант 2: Docker
 
-Docker-образ использует CPU-оптимизированную версию PyTorch для портативности и уменьшенного размера.
+Готовый Docker-образ с CPU-оптимизированной версией PyTorch. Размер: 652.8 MB для скачивания (2.5 GB после установки).
 GPU-ускорение доступно только при локальном запуске (вариант 1) с установленной CUDA-версией PyTorch.
 
-### Сборка образа
+**Запустите команду:** 
 
 ```bash
-git clone https://github.com/EthernalSolitude/yolov8-streamlit-detection.git
-cd yolov8-streamlit-detection
-docker build -t yolo-app .
+docker run -d --name yolo-app -p 8501:8501 -v yolo-cache:/root/.cache/ultralytics --restart unless-stopped ethernalsolitude/yolo-app:latest
 ```
 
-### Запуск контейнера
+Готово! Откройте http://localhost:8501
+
+Docker автоматически скачает образ и запустит приложение. 
+
+#### Альтернативный вариант: сборка образа самостоятельно
+
+Если хотите собрать образ локально или внести изменения в код:
 
 ```bash
+# Клонируйте репозиторий
+git clone https://github.com/EthernalSolitude/yolov8-streamlit-detection.git
+cd yolov8-streamlit-detection
+
+# Соберите образ
+docker build -t yolo-app .
+
+# Запустите контейнер
 docker run -d --name yolo-app -p 8501:8501 -v yolo-cache:/root/.cache/ultralytics --restart unless-stopped yolo-app
 ```
 Приложение будет доступно по адресу: http://localhost:8501
