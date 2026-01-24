@@ -14,8 +14,11 @@
 - Фильтрация по классам объектов (80 классов COCO dataset)
 - Выбор между моделями разного размера: от быстрых до точных
 - Поддержка CPU и CUDA для ускорения на GPU
+- Docker-контейнеризация с оптимизированным образом для запуска на CPU
 
 ## Установка и запуск
+
+### Вариант 1: Локальный запуск (с поддержкой GPU)
 
 ### Клонирование репозитория
 
@@ -41,6 +44,25 @@ streamlit run app.py
 ```
 
 Приложение откроется в браузере по адресу http://localhost:8501
+
+### Вариант 1: Docker
+
+Docker-образ использует CPU-оптимизированную версию PyTorch для портативности и уменьшенного размера.
+
+### Сборка образа
+
+```bash
+git clone https://github.com/EthernalSolitude/yolov8-streamlit-detection.git
+cd yolov8-streamlit-detection
+docker build -t yolo-app .
+```
+
+### Запуск контейнера
+
+```bash
+docker run -d --name yolo-app -p 8501:8501 -v yolo-cache:/root/.cache/ultralytics --restart unless-stopped yolo-app
+```
+Приложение будет доступно по адресу: http://localhost:8501
 
 ## Использование
 
