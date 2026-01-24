@@ -92,12 +92,12 @@ streamlit run app.py
 
 ```
 yolov8-streamlit-detection/
-├── app.py                 # Основное приложение Streamlit
-├── config.py              # Настройки и константы
-├── inference.py           # Класс для работы с YOLOv8
-├── utils.py               # Вспомогательные функции
-├── requirements.txt       # Список зависимостей
-└── README.md              # Документация
+├── app.py                 
+├── config.py              
+├── inference.py           
+├── utils.py              
+├── requirements.txt      
+└── README.md              
 ```
 
 **app.py** - главный файл с интерфейсом и логикой обработки разных режимов
