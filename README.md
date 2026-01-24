@@ -48,6 +48,7 @@ streamlit run app.py
 ### Вариант 2: Docker
 
 Docker-образ использует CPU-оптимизированную версию PyTorch для портативности и уменьшенного размера.
+GPU-ускорение доступно только при локальном запуске с установленной CUDA-версией PyTorch.
 
 ### Сборка образа
 
@@ -114,12 +115,15 @@ docker run -d --name yolo-app -p 8501:8501 -v yolo-cache:/root/.cache/ultralytic
 
 ```
 yolov8-streamlit-detection/
-├── app.py                 
-├── config.py              
-├── inference.py           
-├── utils.py              
-├── requirements.txt      
-└── README.md              
+├── app.py                      
+├── config.py                   
+├── inference.py                
+├── utils.py                   
+├── requirements.txt            
+├── requirements-docker.txt     
+├── Dockerfile                  
+├── .dockerignore               
+└── README.md                              
 ```
 
 **app.py** - главный файл с интерфейсом и логикой обработки разных режимов
@@ -129,6 +133,10 @@ yolov8-streamlit-detection/
 **inference.py** - обертка над YOLOv8 для удобной работы с моделью
 
 **utils.py** - функции для отрисовки результатов и подсчета статистики
+
+**requirements.txt** - полный набор зависимостей для локальной разработки (включая PyTorch с CUDA)
+
+**requirements-docker.txt** - оптимизированные зависимости для Docker (PyTorch CPU-версия устанавливается отдельно в Dockerfile)
 
 ## Примеры кода
 
